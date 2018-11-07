@@ -1,6 +1,6 @@
 #include <iostream>
 #include <fstream>
-
+kuk
 /**
  * The program reads numbers from a file and prints the sum of them
  * Example: main.exe ./tests/input.in
