@@ -21,8 +21,9 @@ int main(int argc, const char * argv[])
 
 	myReadFile.open("datafile.txt");
 	if (myReadFile.fail()) {
-		std::cout << "Sorry, there was an error.";
+		std::cout << "Sorry, there was an error. Press ENTER";
 		std::getchar();
+		exit(1);
 	}
 	while (myReadFile >> a)
 	{
@@ -59,7 +60,7 @@ int main(int argc, const char * argv[])
 
 	avr = (sum / counter);
 	std::cout << "The avarage is: " << sum << "/" << counter << ": " << avr << "\n";
-
+	std::cout << "Numbers above avarage are: \n";
 	for (int i = 0; i < counter; i++)
 	{
 		if (*(arrayPtr + i) > avr)
@@ -71,5 +72,4 @@ int main(int argc, const char * argv[])
 
 	return 0;
 }
-
 
