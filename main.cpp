@@ -11,15 +11,23 @@
  */
 int main(int argc, const char * argv[])
 {
+	char fileName[30];
+	if (argc < 2)
+	{
+		std::cout << "You forgot to enter a filename.";
+		return 1;
+	}
+	strcpy_s(fileName, argv[1]);
 	int avr;
 	int a = 0;
 	int counter = 0;
 	int sum = 0;
 	const int startingSize = 1;
 	int * arrayPtr = new int[startingSize];
+	int * arrayPtr2 = new int[startingSize];
 	std::ifstream myReadFile;
 
-	myReadFile.open("datafile.txt");
+	myReadFile.open(fileName);
 	if (myReadFile.fail()) {
 		std::cout << "Sorry, there was an error. Press ENTER";
 		std::getchar();
@@ -30,7 +38,7 @@ int main(int argc, const char * argv[])
 		if (counter >= startingSize)
 		{
 
-			int *arrayPtr2 = new int[counter + startingSize];
+			arrayPtr2 = new int[counter + startingSize];
 			for (int i = 0; i < (counter); i++)
 			{
 				arrayPtr2[i] = arrayPtr[i];
@@ -38,6 +46,7 @@ int main(int argc, const char * argv[])
 			}
 			delete[]arrayPtr;
 			arrayPtr = arrayPtr2;
+
 			arrayPtr[counter] = a;
 
 
@@ -68,7 +77,7 @@ int main(int argc, const char * argv[])
 
 	}
 
-
+	delete[] arrayPtr2;
 
 	return 0;
 }
