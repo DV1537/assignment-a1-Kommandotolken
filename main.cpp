@@ -18,7 +18,7 @@ int main(int argc, const char * argv[])
 		return 1;
 	}
 	strcpy_s(fileName, argv[1]); //Copy the name from argv to fileName.
-	int avr;
+	float avr;
 	int a = 0;
 	int counter = 0;
 	int sum = 0;
@@ -68,7 +68,7 @@ int main(int argc, const char * argv[])
 	myReadFile.close();
 
 
-	avr = (sum / counter);
+	avr = (sum / static_cast<float>(counter));
 	std::cout << "The avarage is: " << sum << "/" << counter << ": " << avr << "\n";
 	std::cout << "Numbers above avarage are: \n";
 	for (int i = 0; i < counter; i++)
