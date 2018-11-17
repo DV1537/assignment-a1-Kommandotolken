@@ -1,6 +1,7 @@
 #include "pch.h"
 #include <iostream>
 #include <fstream>
+#include <cmath>
 
 /**
  * The program reads numbers from a file and prints the sum of them
@@ -19,12 +20,12 @@ int main(int argc, const char * argv[])
 	}
 	strcpy_s(fileName, argv[1]); //Copy the name from argv to fileName.
 	float avr;
-	int a = 0;
+	float a = 0;
 	int counter = 0;
-	int sum = 0;
+	float sum = 0;
 	const int startingSize = 1;
-	int * arrayPtr = new int[startingSize];
-	int * arrayPtr2 = new int[startingSize];
+	float * arrayPtr = new float[startingSize];
+	float * arrayPtr2 = new float[startingSize];
 	std::ifstream myReadFile;
 
 	myReadFile.open(fileName);
@@ -36,10 +37,11 @@ int main(int argc, const char * argv[])
 	while (myReadFile >> a)
 	{
 
+
 		if (counter >= startingSize)
 		{
 
-			arrayPtr2 = new int[counter + startingSize];
+			arrayPtr2 = new float[counter + startingSize];
 			for (int i = 0; i < counter; i++)
 			{
 				arrayPtr2[i] = arrayPtr[i];
@@ -65,10 +67,17 @@ int main(int argc, const char * argv[])
 
 
 	}
-	myReadFile.close();
 
+	myReadFile.close();
+	if (counter == 0)
+	{
+		std::cout << "No number was in the file";
+		return 1;
+	}
 
 	avr = (sum / static_cast<float>(counter));
+	int roundedAvr = (int)(avr * 1000);
+	avr = ((double(roundedAvr) / 1000));
 	std::cout << "The avarage is: " << sum << "/" << counter << ": " << avr << "\n";
 	std::cout << "Numbers above avarage are: \n";
 	for (int i = 0; i < counter; i++)
