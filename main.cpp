@@ -12,6 +12,8 @@
  */
 int main(int argc, const char * argv[])
 {
+	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
+
 	char fileName[30]; //array for the filename
 	if (argc < 2)
 	{
@@ -36,8 +38,12 @@ int main(int argc, const char * argv[])
 	}
 	while (myReadFile >> a)
 	{
-
-
+		int i;
+		myReadFile >> i;
+		if (itoa(i) == 46)
+		{
+			std::cout << "This is a dot";
+		}
 		if (counter >= startingSize)
 		{
 
